@@ -1,7 +1,9 @@
 # Admin Dashboard
+
 Basic Dashboard that show some dummy data and charts
 
 ### Run
+
 ```js
 
 1- clone https://github.com/ammar-333/Admin-Dasboard.git
@@ -10,3 +12,5 @@ Basic Dashboard that show some dummy data and charts
 
 3- npm run dev
 ```
+
+![App Screenshot](public/image.png)
