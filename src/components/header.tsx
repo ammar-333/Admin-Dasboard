@@ -1,10 +1,9 @@
-import React from "react";
 import { Bell, Menu, Search, Settings } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
 export default function Header() {
   return (
-    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 px-6 py-4 ">
+    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 px-6 py-4.5 ">
       <div className="flex items-center justify-between ">
         {/* left section */}
         <div className="flex items-center space-x-4 ">
@@ -16,7 +15,7 @@ export default function Header() {
             <h1 className="text-2xl font-black text-slate-800 dark:text-slate-300">
               Dashboard
             </h1>
-            <p>Welcome back, Alex! here what's happening today</p>
+            <p>Welcome back, Ammar! here what's happening today</p>
           </div>
         </div>
 
@@ -43,7 +42,7 @@ export default function Header() {
             </span>
           </button>
 
-          <button className="p-2.5 rounded-xl text-slate-600 dark:text-slate-300">
+          <button className="rounded-xl text-slate-600 dark:text-slate-300">
             <Settings className="w-5 h-5" />
           </button>
 
