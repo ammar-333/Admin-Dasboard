@@ -1,14 +1,22 @@
 import { Bell, Menu, Search, Settings } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
-export default function Header() {
+export default function Header({
+  setCollapsed,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setCollapsed: any;
+}) {
   return (
     <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 px-6 py-4.5 ">
       <div className="flex items-center justify-between ">
         {/* left section */}
         <div className="flex items-center space-x-4 ">
-          <button className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800 ">
-            <Menu className="w-7 h-7" />
+          <button className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 hover:dark:bg-slate-800 ">
+            <Menu
+              className="w-7 h-7"
+              onClick={() => setCollapsed((c: boolean) => !c)}
+            />
           </button>
 
           <div className="hidden md:block">

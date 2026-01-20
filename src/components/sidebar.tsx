@@ -8,7 +8,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 const menuItems = [
   {
@@ -50,9 +50,24 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({
+  collapsed,
+  setPage,
+}: {
+  collapsed: boolean;
+  setPage: (page: string) => void;
+}) {
+  const [ChosenBtn, setChosenBtn] = useState("dashboard");
+
+  function handleClick(clickedBtn: string) {
+    setChosenBtn(clickedBtn);
+    setPage(clickedBtn);
+  }
+
   return (
-    <div className="w-72 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 flex flex-col relative z-10 ">
+    <div
+      className={`${collapsed ? "w-20" : "w-72"} bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 flex flex-col relative z-10`}
+    >
       {/* logo */}
       <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50 ">
         <div className="flex items-center space-x-3">
@@ -61,14 +76,16 @@ export default function Sidebar() {
             <Zap />
           </div>
           {/* conditional rendering */}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800 dark:text-white dark:text-white">
-              Ammar
-            </h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400 ">
-              Admin panel
-            </p>
-          </div>
+          {!collapsed && (
+            <div>
+              <h1 className="text-xl font-bold text-slate-800 dark:text-white dark:text-white">
+                Ammar
+              </h1>
+              <p className="text-xs text-slate-500 dark:text-slate-400 ">
+                Admin panel
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -76,12 +93,21 @@ export default function Sidebar() {
       <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
         {menuItems.map((item) => (
           <div key={item.id}>
-            <button className="w-full flex items-center gap-x-3 p-3 rounded-xl hover:bg-slate-200/80 dark:hover:bg-slate-400/80 cursor-pointer ">
+            <button
+              className={`w-full flex items-center gap-x-3 p-3 rounded-xl hover:bg-slate-200/80 dark:hover:bg-slate-400/80 cursor-pointer ${item.id === ChosenBtn && `bg-slate-200/80 dark:bg-slate-400/80`}`}
+              onClick={() => handleClick(item.id)}
+            >
               <item.icon className="w-5 h-5" />
-              <span className="">{item.label}</span>
-              {item.count && (
-                <span className="bg-slate-300 dark:bg-slate-600 rounded-lg p-1.5 text-xs text-slate-900 dark:text-slate-200">
-                  {item.count}
+              {!collapsed && (
+                <span className="flex items-center gap-x-3">
+                  <span className="">{item.label}</span>
+                  <span>
+                    {item.count && (
+                      <span className="bg-slate-300 dark:bg-slate-600 rounded-lg p-1.5 text-xs text-slate-900 dark:text-slate-200">
+                        {item.count}
+                      </span>
+                    )}
+                  </span>
                 </span>
               )}
             </button>
