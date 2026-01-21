@@ -9,6 +9,7 @@ import {
   Zap,
 } from "lucide-react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const menuItems = [
   {
@@ -17,9 +18,9 @@ const menuItems = [
     label: "Dashboard",
   },
   {
-    id: "anaytics",
+    id: "analytics",
     icon: BarChart3,
-    label: "Anaytics",
+    label: "Analytics",
   },
   {
     id: "user",
@@ -50,18 +51,13 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar({
-  collapsed,
-  setPage,
-}: {
-  collapsed: boolean;
-  setPage: (page: string) => void;
-}) {
+export default function Sidebar({ collapsed }: { collapsed: boolean }) {
   const [ChosenBtn, setChosenBtn] = useState("dashboard");
+  const navigate = useNavigate();
 
   function handleClick(clickedBtn: string) {
     setChosenBtn(clickedBtn);
-    setPage(clickedBtn);
+    navigate(`${clickedBtn === "dashboard" ? "/" : clickedBtn}`);
   }
 
   return (

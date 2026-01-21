@@ -50,8 +50,8 @@ export default function Header({
             </span>
           </button>
 
-          <button className="rounded-xl text-slate-600 dark:text-slate-300">
-            <Settings className="w-5 h-5" />
+          <button className="rounded-s text-slate-600 dark:text-slate-300 relative right-1">
+            <Settings className="w-5.5 h-5.5" />
           </button>
 
           <div className="flex items-center space-x-3 pl-3 border-l border-slate-200">
